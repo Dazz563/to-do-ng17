@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// Abstracts
+@import 'styles/abstracts/mixins';
+@import 'styles/abstracts/variables';
+// Base
+@import 'styles/base/typography';
+@import 'styles/base/animations';
+@import 'styles/base/utilities';
+@import 'styles/base/base';
+
+// Components
+@import 'styles/components/header';
+
+// Layouts
+@import 'styles/layouts/layout';
