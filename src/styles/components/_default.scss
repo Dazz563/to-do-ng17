@@ -1,0 +1,16 @@
+.default {
+	height: 100%;
+
+	.sec-1 {
+		background-color: var(--color-primary);
+
+		.sec-1-content {
+			max-width: 60rem;
+			padding: 3rem;
+		}
+	}
+
+	.sec-2 {
+		flex: 1 0 0%;
+	}
+}

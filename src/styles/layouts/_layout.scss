@@ -5,3 +5,28 @@
 		align-items: center;
 	}
 }
+
+.default {
+	display: flex;
+
+	.sec-1 {
+		flex: 1 0 0%;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		.sec-1-content {
+			align-self: center;
+		}
+	}
+
+	.sec-2 {
+		flex: 1 0 0%;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}
