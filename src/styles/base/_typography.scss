@@ -9,17 +9,33 @@ body {
 	color: var(--color-white);
 	font-size: 4rem;
 	margin-bottom: 1rem;
+	text-transform: uppercase;
+}
+
+.heading-secondary {
+	color: var(--color-white);
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+.heading-tertiary {
+	color: var(--color-grey-dark-1);
+	font-size: 1.6rem;
+	text-transform: uppercase;
 }
 
 // text size
 .text-sm {
-	color: var(--color-grey-light-4);
+	color: var(--color-grey-dark-2);
 	font-size: 1.2rem;
 	letter-spacing: 0.1rem;
+	&:hover {
+		color: var(--color-grey-dark-3);
+	}
 }
 
 .text-md {
-	color: var(--color-grey-light-4);
+	color: var(--color-grey-dark-2);
 	font-size: 1.4rem;
 	letter-spacing: 0.1rem;
 }
@@ -34,4 +50,10 @@ body {
 	color: var(--color-grey-light-4);
 	font-size: 2rem;
 	letter-spacing: 0.1rem;
+}
+
+.hover {
+	:hover {
+		color: var(--color-primary);
+	}
 }
