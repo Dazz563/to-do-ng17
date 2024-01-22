@@ -16,7 +16,12 @@
 					}
 				</div>
 				<div class="form-group">
-					<input type="password" formControlName="password" placeholder="Password" class="form-control text-md" />
+					<div class="password-input-wrapper">
+						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" class="form-control text-md" />
+						<button type="button" class="search__button" (click)="showPassword = !showPassword">
+							<i [ngClass]="showPassword ? 'bx bx-show': 'bx bx-hide'" class="icon"></i>
+						</button>
+					</div>
 					@if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
 						<div class="form-group__error">Password is required ***</div>
 					}
