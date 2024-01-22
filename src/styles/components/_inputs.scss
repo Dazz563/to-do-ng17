@@ -33,24 +33,24 @@
 		}
 	}
 
+	.password-input-wrapper {
+		position: relative;
+	}
+
+	.search__button {
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		outline: none;
+	}
+
 	&__error {
 		color: red;
 		font-size: 1.1rem;
 		padding: 0.5rem 0 0 0.5rem;
 	}
-}
-
-.password-input-wrapper {
-	position: relative;
-}
-
-.search__button {
-	position: absolute;
-	right: 10px;
-	top: 50%;
-	transform: translateY(-50%);
-	border: none;
-	background: transparent;
-	cursor: pointer;
-	outline: none;
 }
