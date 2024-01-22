@@ -1,13 +1,13 @@
 <div class="auth-card">
 	<div class="auth-card-header">
 		<div class="center-text heading-tertiary mb-1">{{ isLogin ? 'Login here' : 'Register here' }}</div>
-		<div class="center-text text-md mb-2">Please note, your information is treated with the outmost privacy! We do not share ANY personal data whatsoever.</div>
+		<div class="center-text text-md mb-3">Please note, your information is treated with the outmost privacy! We do not share ANY personal data whatsoever.</div>
 	</div>
 	<div class="auth-card-content">
 		@if (isLogin) {
-			<form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+			<form [formGroup]="loginForm">
 				<div class="form-group">
-					<input type="text" formControlName="email" placeholder="Email Address" class="form-control text-md" />
+					<input type="text" formControlName="email" placeholder="Email Address" [ngClass]="{'invalid': isInvalidLogin('email'), 'valid': isInvalidLogin('email')}" class="form-control text-md" />
 					@if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
 						<div class="form-group__error">Email is required ***</div>
 					}
@@ -17,7 +17,7 @@
 				</div>
 				<div class="form-group">
 					<div class="password-input-wrapper">
-						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" class="form-control text-md" />
+						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" [ngClass]="{'invalid': isInvalidLogin('password'), 'valid': isInvalidLogin('password')}" class="form-control text-md" />
 						<button type="button" class="search__button" (click)="showPassword = !showPassword">
 							<i [ngClass]="showPassword ? 'bx bx-show': 'bx bx-hide'" class="icon"></i>
 						</button>
@@ -31,21 +31,21 @@
 				</div>
 			</form>
 		} @else {
-			<form [formGroup]="registerForm" (ngSubmit)="submitLogin()">
+			<form [formGroup]="registerForm">
 				<div class="form-group">
-					<input type="text" formControlName="firstName" placeholder="Name" class="form-control text-md" />
+					<input type="text" formControlName="firstName" placeholder="Name" [ngClass]="{'invalid': isInvalidRegister('firstName'), 'valid': isValidRegister('firstName')}" class="form-control text-md" />
 					@if (registerForm.get('firstName')?.hasError('required') && registerForm.get('firstName')?.touched) {
 						<div class="form-group__error">Name is required ***</div>
 					}
 				</div>
 				<div class="form-group">
-					<input type="text" formControlName="lastName" placeholder="Surname" class="form-control text-md" />
+					<input type="text" formControlName="lastName" placeholder="Surname" [ngClass]="{'invalid': isInvalidRegister('lastName'), 'valid': isValidRegister('lastName')}" class="form-control text-md" />
 					@if (registerForm.get('lastName')?.hasError('required') && registerForm.get('lastName')?.touched) {
 						<div class="form-group__error">Surname is required ***</div>
 					}
 				</div>
 				<div class="form-group">
-					<input type="text" formControlName="email" placeholder="Email Address" class="form-control text-md" />
+					<input type="text" formControlName="email" placeholder="Email Address" [ngClass]="{'invalid': isInvalidRegister('email'), 'valid': isValidRegister('email')}" class="form-control text-md" />
 					@if (registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched) {
 						<div class="form-group__error">Email is required ***</div>
 					}
@@ -55,7 +55,7 @@
 				</div>
 				<div class="form-group">
 					<div class="password-input-wrapper">
-						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" class="form-control text-md" />
+						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" [ngClass]="{'invalid': isInvalidRegister('password'), 'valid': isValidRegister('password')}" class="form-control text-md" />
 						<button type="button" class="search__button" (click)="showPassword = !showPassword">
 							<i [ngClass]="showPassword ? 'bx bx-show': 'bx bx-hide'" class="icon"></i>
 						</button>
@@ -68,7 +68,7 @@
 					}
 				</div>
 				<div class="form-group">
-					<input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Confirm Password" class="form-control text-md" />
+					<input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Confirm Password" [ngClass]="{'invalid': isInvalidRegister('confirmPassword'), 'valid': isValidRegister('confirmPassword')}" class="form-control text-md" />
 					@if (registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched) {
 						<div class="form-group__error">Confirm Password is required ***</div>
 					}

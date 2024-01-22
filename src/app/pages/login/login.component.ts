@@ -38,6 +38,28 @@ export class LoginComponent {
 		return password === confirmPassword ? null : {mismatch: true};
 	}
 
+	// Login form getters
+	isInvalidLogin(controlName: string): boolean {
+		const control = this.loginForm.get(controlName);
+		return !!control?.invalid && control?.touched;
+	}
+
+	isValidLogin(controlName: string): boolean {
+		const control = this.loginForm.get(controlName);
+		return !!control?.valid && control?.touched;
+	}
+
+	// Register form getters
+	isInvalidRegister(controlName: string): boolean {
+		const control = this.registerForm.get(controlName);
+		return !!control?.invalid && control?.touched;
+	}
+
+	isValidRegister(controlName: string): boolean {
+		const control = this.registerForm.get(controlName);
+		return !!control?.valid && control?.touched;
+	}
+
 	submitLogin() {
 		console.log(this.loginForm.value);
 		if (this.loginForm.valid) {

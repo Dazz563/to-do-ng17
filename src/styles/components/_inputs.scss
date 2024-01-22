@@ -17,14 +17,19 @@
 			box-shadow 0.15s ease-in-out;
 
 		&:focus {
-			color: var(--color-grey-dark-2);
 			outline: none;
-			border-color: #80bdff;
-			box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 		}
 
 		&::placeholder {
 			color: var(--color-grey-light-4);
+		}
+
+		&.invalid {
+			border-color: rgb(255, 107, 107);
+		}
+
+		&.valid {
+			border-color: #9bf79b;
 		}
 	}
 
