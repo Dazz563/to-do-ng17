@@ -1,1 +1,92 @@
-<p>login works!</p>
+<div class="auth-card">
+	<div class="auth-card-header">
+		<div class="center-text heading-tertiary mb-1">{{ isLogin ? 'Login here' : 'Register here' }}</div>
+		<div class="center-text text-md mb-3">Please note, your information is treated with the outmost privacy! We do not share ANY personal data whatsoever.</div>
+	</div>
+	<div class="auth-card-content">
+		@if (isLogin) {
+			<form [formGroup]="loginForm">
+				<div class="form-group">
+					<input type="text" formControlName="email" placeholder="Email Address" [ngClass]="{'invalid': isInvalidLogin('email'), 'valid': isValidLogin('email')}" class="form-control text-md" />
+					@if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+						<div class="form-group__error">Email is required ***</div>
+					}
+					@if (loginForm.get('email')?.hasError('email')) {
+						<div class="form-group__error">Email is incorrectly formatted ***</div>
+					}
+				</div>
+				<div class="form-group">
+					<div class="password-input-wrapper">
+						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" [ngClass]="{'invalid': isInvalidLogin('password'), 'valid': isValidLogin('password')}" class="form-control text-md" />
+						<button type="button" class="search__button" (click)="showPassword = !showPassword">
+							<i [ngClass]="showPassword ? 'bx bx-show': 'bx bx-hide'" class="icon"></i>
+						</button>
+					</div>
+					@if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+						<div class="form-group__error">Password is required ***</div>
+					}
+					@if (loginForm.get('password')?.hasError('minlength')) {
+						<div class="form-group__error">Password must be at least 6 characters long ***</div>
+					}
+				</div>
+			</form>
+		} @else {
+			<form [formGroup]="registerForm">
+				<div class="form-group">
+					<input type="text" formControlName="firstName" placeholder="Name" [ngClass]="{'invalid': isInvalidRegister('firstName'), 'valid': isValidRegister('firstName')}" class="form-control text-md" />
+					@if (registerForm.get('firstName')?.hasError('required') && registerForm.get('firstName')?.touched) {
+						<div class="form-group__error">Name is required ***</div>
+					}
+				</div>
+				<div class="form-group">
+					<input type="text" formControlName="lastName" placeholder="Surname" [ngClass]="{'invalid': isInvalidRegister('lastName'), 'valid': isValidRegister('lastName')}" class="form-control text-md" />
+					@if (registerForm.get('lastName')?.hasError('required') && registerForm.get('lastName')?.touched) {
+						<div class="form-group__error">Surname is required ***</div>
+					}
+				</div>
+				<div class="form-group">
+					<input type="text" formControlName="email" placeholder="Email Address" [ngClass]="{'invalid': isInvalidRegister('email'), 'valid': isValidRegister('email')}" class="form-control text-md" />
+					@if (registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched) {
+						<div class="form-group__error">Email is required ***</div>
+					}
+					@if (registerForm.get('email')?.hasError('email')) {
+						<div class="form-group__error">Email is incorrectly formatted ***</div>
+					}
+				</div>
+				<div class="form-group">
+					<div class="password-input-wrapper">
+						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" [ngClass]="{'invalid': isInvalidRegister('password'), 'valid': isValidRegister('password')}" class="form-control text-md" />
+						<button type="button" class="search__button" (click)="showPassword = !showPassword">
+							<i [ngClass]="showPassword ? 'bx bx-show': 'bx bx-hide'" class="icon"></i>
+						</button>
+					</div>
+					@if (registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched) {
+						<div class="form-group__error">Password is required ***</div>
+					}
+					@if (registerForm.get('password')?.hasError('minlength')) {
+						<div class="form-group__error">Password must be at least 6 characters long ***</div>
+					}
+				</div>
+				<div class="form-group">
+					<input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Confirm Password" [ngClass]="{'invalid': isInvalidRegister('confirmPassword'), 'valid': isValidRegister('confirmPassword')}" class="form-control text-md" />
+					@if (registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched) {
+						<div class="form-group__error">Confirm Password is required ***</div>
+					}
+					@if (registerForm.hasError('mismatch')) {
+						<div class="form-group__error">Passwords do not match ***</div>
+					}
+				</div>
+			</form>
+		}
+	</div>
+	<div class="login-actions center-text">
+		@if (isLogin) {
+			<button (click)="submitLogin()" type="button" class="btn btn-primary">Login</button>
+		} @else {
+			<button (click)="submitRegister()" type="button" class="btn btn-primary">Register</button>
+		}
+		<!-- <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Submit</button> -->
+		<div (click)="isLogin = !isLogin" class="text-sm m-1 cursor-pointer">{{ isLogin ? 'Need to register?' : 'Back to Login' }}</div>
+		<div class="text-sm cursor-pointer">Forgot password?</div>
+	</div>
+</div>

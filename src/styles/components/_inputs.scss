@@ -1,0 +1,56 @@
+.form-group {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin: 1rem auto;
+	.form-control {
+		height: 3.5rem;
+		font-family: inherit;
+		color: var();
+		padding: 0.5rem 0.7rem;
+		border: 1px solid #ccc;
+		border-radius: 0.5rem;
+		line-height: 1.5;
+		width: 100%;
+		transition:
+			border-color 0.15s ease-in-out,
+			box-shadow 0.15s ease-in-out;
+
+		&:focus {
+			outline: none;
+		}
+
+		&::placeholder {
+			color: var(--color-grey-light-4);
+		}
+
+		&.invalid {
+			border-color: rgb(255, 107, 107);
+		}
+
+		&.valid {
+			border-color: #9bf79b;
+		}
+	}
+
+	.password-input-wrapper {
+		position: relative;
+	}
+
+	.search__button {
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		outline: none;
+	}
+
+	&__error {
+		color: red;
+		font-size: 1.1rem;
+		padding: 0.5rem 0 0 0.5rem;
+	}
+}

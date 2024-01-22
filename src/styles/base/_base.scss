@@ -12,4 +12,13 @@ body {
 	height: 100%;
 	background-color: #eee;
 	color: var(--color-grey-dark-1);
+
+	@media only screen and (max-width: $bp-large) {
+		font-size: 50%;
+	}
+}
+
+.app-wrapper {
+	// border: 1px solid red;
+	height: 100%;
 }
