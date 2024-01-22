@@ -1,1 +1,13 @@
-<p>todo works!</p>
+<div class="to-do-container">
+	<div class="to-do-header">
+		<div class="font-bold text-xl">Manage Todos</div>
+		<button class="btn btn-primary">Add</button>
+	</div>
+
+	<div class="to-do-content mt-3">
+		@for (item of todos; track $index) {
+			<app-todo-card [type]="item.status" [todo]="item"></app-todo-card>
+			<app-todo-card [type]="item.status" [todo]="item"></app-todo-card>
+		}
+	</div>
+</div>
