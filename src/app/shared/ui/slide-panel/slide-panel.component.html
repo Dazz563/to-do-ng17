@@ -1,1 +1,13 @@
-<p>slide-panel works!</p>
+@if (isOpen) {
+	<div class="fixed-slide-panel">
+		<div class="panel-container" @fadeSlideInOut>
+			<div class="panel-header">
+				<div class="text-xl">{{ headerText }}</div>
+				<i (click)="onClosePanel()" class="bx bx-x icon icon-close cursor-pointer"></i>
+			</div>
+			<div class="panel-content">
+				<ng-content></ng-content>
+			</div>
+		</div>
+	</div>
+}

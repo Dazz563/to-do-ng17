@@ -1,0 +1,46 @@
+// Assuming you have a parent class for styling purposes
+.fixed-slide-panel {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: rgba(34, 34, 34, 0.6); // Equivalent to bg-gray-900/60
+	width: 100vw;
+	height: 100vh;
+	z-index: 30;
+
+	.panel-container {
+		position: absolute;
+		right: 0;
+		max-width: 32rem; // Equivalent to max-w-md
+		background-color: #fff; // Equivalent to bg-white
+		width: 100vw;
+		height: 100vh;
+		box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2); // Equivalent to shadow
+
+		// Transition for fade and slide-in effect
+		// @include fadeSlideInRight;
+	}
+
+	.panel-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.25rem; // Equivalent to p-5
+		border-bottom: 1px solid #e2e8f0; // Equivalent to border-b border-gray-200
+
+		h4 {
+			font-weight: bold; // Equivalent to font-bold
+			font-size: 1.5rem; // Equivalent to text-xl
+		}
+	}
+
+	.panel-content {
+		display: flex;
+		flex-direction: column;
+		padding: 1.25rem; // Equivalent to p-5
+		// Additional styling for the app-slide-panel class
+		.app-slide-panel {
+			// Add your styles here
+		}
+	}
+}

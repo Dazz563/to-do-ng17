@@ -1,7 +1,7 @@
 <div class="to-do-container">
 	<div class="to-do-header">
 		<div class="font-bold text-xl">Manage Todos</div>
-		<button class="btn btn-primary">Add</button>
+		<button (click)="openSlidePanel()" class="btn btn-primary">Add</button>
 	</div>
 
 	<div class="to-do-content mt-3">
@@ -11,3 +11,7 @@
 		}
 	</div>
 </div>
+
+<app-slide-panel [headerText]="'Todo Details'" [isOpen]="isSlidePanelOpen" (onClose)="onCloseSlidePanel()">
+	<form action=""></form>
+</app-slide-panel>
