@@ -49,12 +49,26 @@
 					}
 				</div>
 				<div class="form-group">
-					<input type="password" formControlName="password" placeholder="Password" class="form-control text-md" />
+					<div class="password-input-wrapper">
+						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" class="form-control text-md" />
+						<button type="button" class="search__button" (click)="showPassword = !showPassword">
+							<i [ngClass]="showPassword ? 'bx bx-show': 'bx bx-hide'" class="icon"></i>
+						</button>
+					</div>
 					@if (registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched) {
 						<div class="form-group__error">Password is required ***</div>
 					}
-					@if (loginForm.get('password')?.hasError('minlength')) {
+					@if (registerForm.get('password')?.hasError('minlength')) {
 						<div class="form-group__error">Password must be at least 6 characters long ***</div>
+					}
+				</div>
+				<div class="form-group">
+					<input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Confirm Password" class="form-control text-md" />
+					@if (registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched) {
+						<div class="form-group__error">Confirm Password is required ***</div>
+					}
+					@if (registerForm.hasError('mismatch')) {
+						<div class="form-group__error">Passwords do not match ***</div>
 					}
 				</div>
 			</form>
