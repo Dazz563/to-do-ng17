@@ -7,7 +7,7 @@
 		@if (isLogin) {
 			<form [formGroup]="loginForm">
 				<div class="form-group">
-					<input type="text" formControlName="email" placeholder="Email Address" [ngClass]="{'invalid': isInvalidLogin('email'), 'valid': isInvalidLogin('email')}" class="form-control text-md" />
+					<input type="text" formControlName="email" placeholder="Email Address" [ngClass]="{'invalid': isInvalidLogin('email'), 'valid': isValidLogin('email')}" class="form-control text-md" />
 					@if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
 						<div class="form-group__error">Email is required ***</div>
 					}
@@ -17,7 +17,7 @@
 				</div>
 				<div class="form-group">
 					<div class="password-input-wrapper">
-						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" [ngClass]="{'invalid': isInvalidLogin('password'), 'valid': isInvalidLogin('password')}" class="form-control text-md" />
+						<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" [ngClass]="{'invalid': isInvalidLogin('password'), 'valid': isValidLogin('password')}" class="form-control text-md" />
 						<button type="button" class="search__button" (click)="showPassword = !showPassword">
 							<i [ngClass]="showPassword ? 'bx bx-show': 'bx bx-hide'" class="icon"></i>
 						</button>
