@@ -13,5 +13,32 @@
 </div>
 
 <app-slide-panel [headerText]="'Todo Details'" [isOpen]="isSlidePanelOpen" (onClose)="onCloseSlidePanel()">
-	<form action=""></form>
+	<form [formGroup]="todoForm" (ngSubmit)="onSave()">
+		<div class="form-group">
+			<input type="text" formControlName="title" placeholder="Title" [ngClass]="{'invalid': isInvalid('title'), 'valid': isValid('title')}" class="form-control text-md" />
+			@if (todoForm.get('title')?.hasError('required') && todoForm.get('title')?.touched) {
+				<div class="form-group__error">Title is required ***</div>
+			}
+		</div>
+		<div class="form-group">
+			<textarea rows="10" formControlName="description" placeholder="Description" [ngClass]="{'invalid': isInvalid('description'), 'valid': isValid('description')}" class="form-control-textarea text-md"></textarea>
+			@if (todoForm.get('description')?.hasError('required') && todoForm.get('description')?.touched) {
+				<div class="form-group__error">Description is required ***</div>
+			}
+		</div>
+		<div class="form-group">
+			<select type="text" formControlName="status" placeholder="Status" [ngClass]="{'invalid': isInvalid('status'), 'valid': isValid('status')}" class="form-control select-control text-md">
+				@for (item of todoStatus; track $index) {
+					<option [value]="item">{{ item }}</option>
+				}
+			</select>
+			@if (todoForm.get('status')?.hasError('required') && todoForm.get('status')?.touched) {
+				<div class="form-group__error">Status is required ***</div>
+			}
+		</div>
+		<div class="to-do-actions">
+			<button type="submit" class="btn btn-primary">Save</button>
+			<button type="button" class="btn btn-secondary" (click)="onCloseSlidePanel()">Cancel</button>
+		</div>
+	</form>
 </app-slide-panel>

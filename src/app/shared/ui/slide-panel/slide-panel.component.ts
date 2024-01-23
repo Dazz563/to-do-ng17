@@ -13,7 +13,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 				style({opacity: 0, transform: 'translateX(100%)'}),
 				animate('300ms', style({opacity: 1, transform: 'translateX(0%)'})),
 			]),
-			transition(':leave', [animate('300ms', style({opacity: 0, transform: 'translateX(100%)'}))]),
+			transition(':leave', [
+				//
+				animate('300ms', style({opacity: 0, transform: 'translateX(100%)'})),
+			]),
 		]),
 	],
 })
@@ -23,8 +26,6 @@ export class SlidePanelComponent {
 	@Output() onClose = new EventEmitter();
 
 	onClosePanel() {
-		// console.log('triggered');
-
 		this.onClose.emit(false);
 	}
 }

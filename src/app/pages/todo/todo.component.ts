@@ -1,14 +1,20 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {TodoCardComponent} from '../../shared/components/todo-card/todo-card.component';
+import {ITodoStatus, TodoCardComponent} from '../../shared/components/todo-card/todo-card.component';
 import {TodoService} from '../../services/todo.service';
 import {ITodo} from '../../models/todo.model';
 import {SlidePanelComponent} from '../../shared/ui/slide-panel/slide-panel.component';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-todo',
 	standalone: true,
-	imports: [TodoCardComponent, SlidePanelComponent],
+	imports: [
+		CommonModule, //
+		ReactiveFormsModule,
+		TodoCardComponent,
+		SlidePanelComponent,
+	],
 	templateUrl: './todo.component.html',
 })
 export class TodoComponent implements OnInit {
@@ -17,6 +23,7 @@ export class TodoComponent implements OnInit {
 		description: new FormControl('', [Validators.required]),
 		status: new FormControl('OPEN', [Validators.required]),
 	});
+	todoStatus = ITodoStatus;
 	todos: ITodo[] = [];
 	isSlidePanelOpen = false;
 
@@ -36,5 +43,24 @@ export class TodoComponent implements OnInit {
 
 	onCloseSlidePanel() {
 		this.isSlidePanelOpen = false;
+	}
+
+	// Form getters
+	isInvalid(controlName: string): boolean {
+		const control = this.todoForm.get(controlName);
+		return !!control?.invalid && control?.touched;
+	}
+
+	isValid(controlName: string): boolean {
+		const control = this.todoForm.get(controlName);
+		return !!control?.valid && control?.touched;
+	}
+
+	onSave() {
+		if (this.todoForm.valid) {
+			console.log('Form Submitted!', this.todoForm.value);
+		} else {
+			this.todoForm.markAllAsTouched();
+		}
 	}
 }
