@@ -29,7 +29,13 @@ export class AuthService {
 
 	onLogout() {
 		this.http
-			.post(`${environment.apiBaseUrl}/${environment.apiEndpoints.logout}`, {}) //
+			.post(
+				`${environment.apiBaseUrl}/${environment.apiEndpoints.logout}`,
+				{},
+				{
+					// withCredentials: true,
+				}
+			) //
 			.subscribe({
 				next: () => {
 					this.tokenService.removeToken();
