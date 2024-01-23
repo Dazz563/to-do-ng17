@@ -10,11 +10,10 @@ export interface ILogin {
 }
 
 export interface IRegister {
-	firstName: string;
-	lastName: string;
+	name: string;
+	surname: string;
 	email: string;
 	password: string;
-	confirmPassword: string;
 }
 
 export interface ILoginResponse {

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormGroup, FormControl, Validators, ReactiveFormsModule, AbstractControl} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
-import {ILogin} from '../../models/auth.model';
+import {ILogin, IRegister} from '../../models/auth.model';
 
 @Component({
 	selector: 'app-login',
@@ -23,8 +23,8 @@ export class LoginComponent {
 
 	registerForm = new FormGroup(
 		{
-			firstName: new FormControl('', [Validators.required]),
-			lastName: new FormControl('', [Validators.required]),
+			name: new FormControl('', [Validators.required]),
+			surname: new FormControl('', [Validators.required]),
 			email: new FormControl('', [Validators.required, Validators.email]),
 			password: new FormControl('', [Validators.required, Validators.minLength(6)]),
 			confirmPassword: new FormControl('', [Validators.required]),
@@ -81,6 +81,13 @@ export class LoginComponent {
 	submitRegister() {
 		console.log(this.registerForm.value);
 		if (this.registerForm.valid) {
+			this.authService.onRegister(this.registerForm.value as IRegister).subscribe({
+				next: (res) => {
+					console.log('register res: ', res);
+					this.isLogin = true;
+				},
+				error: (err) => {},
+			});
 		} else {
 			this.registerForm.markAllAsTouched();
 		}

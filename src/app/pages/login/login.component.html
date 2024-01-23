@@ -33,14 +33,14 @@
 		} @else {
 			<form [formGroup]="registerForm">
 				<div class="form-group">
-					<input type="text" formControlName="firstName" placeholder="Name" [ngClass]="{'invalid': isInvalidRegister('firstName'), 'valid': isValidRegister('firstName')}" class="form-control text-md" />
-					@if (registerForm.get('firstName')?.hasError('required') && registerForm.get('firstName')?.touched) {
+					<input type="text" formControlName="name" placeholder="Name" [ngClass]="{'invalid': isInvalidRegister('name'), 'valid': isValidRegister('name')}" class="form-control text-md" />
+					@if (registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched) {
 						<div class="form-group__error">Name is required ***</div>
 					}
 				</div>
 				<div class="form-group">
-					<input type="text" formControlName="lastName" placeholder="Surname" [ngClass]="{'invalid': isInvalidRegister('lastName'), 'valid': isValidRegister('lastName')}" class="form-control text-md" />
-					@if (registerForm.get('lastName')?.hasError('required') && registerForm.get('lastName')?.touched) {
+					<input type="text" formControlName="surname" placeholder="Surname" [ngClass]="{'invalid': isInvalidRegister('surname'), 'valid': isValidRegister('surname')}" class="form-control text-md" />
+					@if (registerForm.get('surname')?.hasError('required') && registerForm.get('surname')?.touched) {
 						<div class="form-group__error">Surname is required ***</div>
 					}
 				</div>

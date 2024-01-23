@@ -5,6 +5,7 @@ import {ITodo} from '../../models/todo.model';
 import {SlidePanelComponent} from '../../shared/ui/slide-panel/slide-panel.component';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
 	selector: 'app-todo',
@@ -27,10 +28,18 @@ export class TodoComponent implements OnInit {
 	todos: ITodo[] = [];
 	isSlidePanelOpen = false;
 
-	constructor(private todoService: TodoService) {}
+	constructor(
+		private todoService: TodoService, //
+		private authService: AuthService
+	) {}
 
 	ngOnInit(): void {
 		this.getAllTodos();
+		this.authService.getUser().subscribe({
+			next: (res) => {
+				console.log(res);
+			},
+		}); //
 	}
 
 	getAllTodos() {
