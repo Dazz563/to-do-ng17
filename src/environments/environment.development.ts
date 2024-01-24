@@ -7,6 +7,7 @@ export const environment = {
 		register: 'api/register',
 		logout: 'api/logout',
 		getUser: 'api/user',
+		refreshToken: 'api/refresh',
 
 		// getAllTodos: '/api/todos',
 		// getTodoById: '/api/todos/:id',

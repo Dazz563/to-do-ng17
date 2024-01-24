@@ -9,6 +9,8 @@ export const authGuard: CanActivateFn = (route, state) => {
 	tokenService.isAuthenticated.subscribe({
 		next: (value) => {
 			if (!value) {
+				console.log('Not authenticated, apply refresh token logic here');
+
 				router.navigate(['']);
 			}
 		},

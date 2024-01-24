@@ -18,7 +18,7 @@ export class AuthService {
 
 	onLogin(data: ILogin) {
 		return this.http
-			.post<ILoginResponse>(`${environment.apiBaseUrl}/${environment.apiEndpoints.login}`, data) //
+			.post<ILoginResponse>(`${environment.apiBaseUrl}/${environment.apiEndpoints.login}`, data, {withCredentials: true}) //
 			.pipe(
 				map((res) => {
 					if (res) {
@@ -52,7 +52,7 @@ export class AuthService {
 				`${environment.apiBaseUrl}/${environment.apiEndpoints.logout}`,
 				{},
 				{
-					// withCredentials: true,
+					withCredentials: true,
 				}
 			) //
 			.subscribe({

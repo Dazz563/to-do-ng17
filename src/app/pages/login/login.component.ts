@@ -71,7 +71,9 @@ export class LoginComponent {
 				next: (res) => {
 					console.log('login res: ', res);
 				},
-				error: (err) => {},
+				error: (err) => {
+					// TODO: Handle error
+				},
 			});
 		} else {
 			this.loginForm.markAllAsTouched();
@@ -86,7 +88,9 @@ export class LoginComponent {
 					console.log('register res: ', res);
 					this.isLogin = true;
 				},
-				error: (err) => {},
+				error: (err) => {
+					// TODO: Handle error
+				},
 			});
 		} else {
 			this.registerForm.markAllAsTouched();
