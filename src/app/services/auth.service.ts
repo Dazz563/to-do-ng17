@@ -23,6 +23,7 @@ export class AuthService {
 				map((res) => {
 					if (res) {
 						this.tokenService.setToken(res.token);
+						this.router.navigate(['todo']);
 					}
 					return res;
 				})
@@ -58,6 +59,7 @@ export class AuthService {
 			.subscribe({
 				next: () => {
 					this.tokenService.removeToken();
+					this.router.navigate(['']);
 				},
 				error: (err) => {
 					console.log(err);

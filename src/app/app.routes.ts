@@ -10,7 +10,7 @@ export const routes: Routes = [
 	{
 		path: '',
 		component: DefaultComponent,
-		canActivate: [guestGuard],
+		// canActivate: [guestGuard],
 		children: [
 			{
 				path: '',
@@ -21,7 +21,7 @@ export const routes: Routes = [
 	{
 		path: '',
 		component: MasterComponent,
-		canActivate: [authGuard],
+		// canActivate: [authGuard],
 		children: [
 			{
 				path: 'todo',

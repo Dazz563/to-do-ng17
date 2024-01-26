@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, tap} from 'rxjs';
 import {environment} from '../../environments/environment.development';
 import {HttpClient} from '@angular/common/http';
+import {ILoginResponse} from '../models/auth.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -11,6 +12,7 @@ export class TokenService {
 
 	constructor(private http: HttpClient) {
 		const token = this.getToken();
+
 		if (token) {
 			this.updateToken(true);
 		}
@@ -35,6 +37,10 @@ export class TokenService {
 	}
 
 	refreshToken() {
-		return this.http.post(`${environment.apiBaseUrl}/${environment.apiEndpoints.refreshToken}`, {}, {withCredentials: true});
+		return this.http.post<ILoginResponse>(`${environment.apiBaseUrl}/${environment.apiEndpoints.refreshToken}`, {}, {withCredentials: true}).pipe(
+			tap((res) => {
+				console.log('Refesh token method in service called ');
+			})
+		);
 	}
 }
